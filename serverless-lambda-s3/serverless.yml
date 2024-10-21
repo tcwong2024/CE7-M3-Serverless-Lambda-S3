@@ -1,0 +1,37 @@
+service: wtc-serverless-lambda-s3
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  stage: production
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource: "*"
+
+functions:
+  processCSV:
+    name: wtcProcessCSV
+    handler: handler.processCSV
+    events:
+      - s3:
+                  # CHANGE-TO-YOURNAME
+          bucket: wtc-serverless-bucket-input
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
+    environment:
+      FIXED_WIDTH_BUCKET: ${self:resources.Resources.fixedwidth.Properties.BucketName}
+      NODE_ENV: production
+
+resources:
+  Resources:
+    fixedwidth:
+      Type: AWS::S3::Bucket
+      Properties:
+                  # CHANGE-TO-YOURNAME
+        BucketName: wtc-serverless-bucket-output
