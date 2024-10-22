@@ -22,7 +22,13 @@
    ```
        - serverless deploy -v
    ```
-6. Clean up
+6. The serverless deployment successfully, below this will be created at AWS services.
+   - S3 input bucket
+   - S3 output bucket
+   - Lambda function
+7. To the Lambda function. drag and drop the CSV file (sampleData.csv) from the git repository folder into S3 input bucket.Once uploaded done, go to the S3 output bucket, you will see the txt file (sampleData.txt) generated.
+8. Go the the Lambda function and check the cloudwatch for the log event and the metrics.
+9. Clean up
     - S3 Bucket - manually delete the file in S3 bucket
     - Serverless 
    ```
