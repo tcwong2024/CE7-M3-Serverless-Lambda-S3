@@ -1,4 +1,4 @@
-# Create serverless lambda function to convert csv file into txt file format and the input and output fille will store in S3 bucket seperatly.
+# Create serverless lambda function to convert csv file into txt file format and the input and output fille will store in S3 bucket separately.
 
 1. Create and clone new github repository.
 2. Add the "serverless-lambda-s3" folder inside the local git folder. 
